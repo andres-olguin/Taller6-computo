@@ -24,3 +24,13 @@ Se incorporó una [interfaz experimental en docs/index.html](docs/index.html) qu
 Para publicarla, configurar GitHub Pages con rama main y carpeta /docs, verificar el sitio y agregar su URL comprobada a la sección About del repositorio. La interfaz es una adaptación o visualización didáctica; consultar sus límites en la propia página.
 
 [Estudio de evolución y requisitos de seguridad](docs/ESTUDIO_DE_EVOLUCION_2026-10-30.md).
+
+
+## Validación reproducible de CSV (propuesta en revisión)
+
+Se añade `scripts/validate_results.py` para validar resultados tabulares externos con columnas `Procesos,Tamano,Tiempo_Secuencial,Tiempo_Paralelo,Speedup`. El archivo histórico `resultados.csv` mezcla cabeceras y texto, por lo que **no puede interpretarse como resultados tabulares confiables** sin limpieza y nueva verificación. El archivo de ejemplo es ficticio y está rotulado. Consultar `docs/BENCHMARK_REPRODUCIBILITY.md`.
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/validate_results.py examples/measurements-example.csv
+```
